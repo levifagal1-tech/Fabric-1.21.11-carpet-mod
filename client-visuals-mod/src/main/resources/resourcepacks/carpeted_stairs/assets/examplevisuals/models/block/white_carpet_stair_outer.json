@@ -1,0 +1,56 @@
+{
+	"textures": {
+		"particle": "#wool",
+		"wool": "minecraft:block/white_wool"
+	},
+	"elements": [
+		{
+			"from": [0, -8, 0],
+			"to": [8, -7, 8],
+			"faces": {
+				"down": { "uv": [0, 0, 8, 8], "texture": "#wool" },
+				"up": { "uv": [0, 0, 8, 8], "texture": "#wool" },
+				"north": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"south": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"west": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"east": { "uv": [0, 15, 8, 16], "texture": "#wool" }
+			}
+		},
+		{
+			"from": [0, -8, 8],
+			"to": [8, -7, 16],
+			"faces": {
+				"down": { "uv": [0, 8, 8, 16], "texture": "#wool" },
+				"up": { "uv": [0, 8, 8, 16], "texture": "#wool" },
+				"north": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"south": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"west": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"east": { "uv": [8, 15, 16, 16], "texture": "#wool" }
+			}
+		},
+		{
+			"from": [8, -8, 0],
+			"to": [16, -7, 8],
+			"faces": {
+				"down": { "uv": [8, 0, 16, 8], "texture": "#wool" },
+				"up": { "uv": [8, 0, 16, 8], "texture": "#wool" },
+				"north": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"south": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"west": { "uv": [0, 15, 8, 16], "texture": "#wool" },
+				"east": { "uv": [0, 15, 8, 16], "texture": "#wool" }
+			}
+		},
+		{
+			"from": [8, 0, 8],
+			"to": [16, 1, 16],
+			"faces": {
+				"down": { "uv": [8, 8, 16, 16], "texture": "#wool" },
+				"up": { "uv": [8, 8, 16, 16], "texture": "#wool" },
+				"north": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"south": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"west": { "uv": [8, 15, 16, 16], "texture": "#wool" },
+				"east": { "uv": [8, 15, 16, 16], "texture": "#wool" }
+			}
+		}
+	]
+}

@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -38,10 +39,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Block.class)
 public abstract class CarpetStairShapeMixin {
 
+	// Separate from facing/shape: those two default to north/straight, which is
+	// indistinguishable from a genuine straight stair facing north. Without this flag, the
+	// client-visuals-mod resource pack would have no way to tell "plain carpet, not on a
+	// stair" apart from "carpet on a straight, north-facing stair" - both would need to be
+	// exactly one of those two, and they can't both be right off the same two tags.
+	private static final BooleanProperty STAIR_SHAPED = BooleanProperty.create("stair_shaped");
+
 	@Inject(method = "createBlockStateDefinition", at = @At("RETURN"))
 	private void examplecollision$addStairShapeProperties(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
 		if ((Object) this instanceof CarpetBlock) {
-			builder.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.STAIRS_SHAPE);
+			builder.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.STAIRS_SHAPE, STAIR_SHAPED);
 		}
 	}
 
@@ -58,13 +66,13 @@ public abstract class CarpetStairShapeMixin {
 
 		Level level = context.getLevel();
 		BlockState below = level.getBlockState(context.getClickedPos().below());
+		boolean stairShaped = examplecollision$isBottomStair(below);
 
-		if (!examplecollision$isBottomStair(below)) {
-			return;
+		result = result.setValue(STAIR_SHAPED, stairShaped);
+		if (stairShaped) {
+			result = result.setValue(BlockStateProperties.HORIZONTAL_FACING, below.getValue(BlockStateProperties.HORIZONTAL_FACING));
+			result = result.setValue(BlockStateProperties.STAIRS_SHAPE, below.getValue(BlockStateProperties.STAIRS_SHAPE));
 		}
-
-		result = result.setValue(BlockStateProperties.HORIZONTAL_FACING, below.getValue(BlockStateProperties.HORIZONTAL_FACING));
-		result = result.setValue(BlockStateProperties.STAIRS_SHAPE, below.getValue(BlockStateProperties.STAIRS_SHAPE));
 
 		cir.setReturnValue(result);
 	}

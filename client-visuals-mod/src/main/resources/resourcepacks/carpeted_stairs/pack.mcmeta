@@ -1,0 +1,6 @@
+{
+	"pack": {
+		"pack_format": 75,
+		"description": "Carpeted Stairs: reshapes carpet placed on a stair to follow its facing/shape, reusing the vanilla wool texture (verify pack_format for your exact 1.21.11 build at https://minecraft.wiki/w/Pack_format)"
+	}
+}

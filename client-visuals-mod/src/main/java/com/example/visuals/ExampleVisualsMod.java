@@ -18,7 +18,7 @@ public class ExampleVisualsMod implements ModInitializer {
 
 	// One entry per folder under src/main/resources/resourcepacks/ - add more packs
 	// to the collection by dropping in another folder and listing its name here.
-	private static final List<String> BUNDLED_PACKS = List.of("example_retexture");
+	private static final List<String> BUNDLED_PACKS = List.of("example_retexture", "carpeted_stairs");
 
 	@Override
 	public void onInitialize() {

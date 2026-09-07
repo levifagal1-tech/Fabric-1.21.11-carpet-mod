@@ -1,0 +1,227 @@
+{
+	"multipart": [
+		{
+			"when": {
+				"stair_shaped": "false"
+			},
+			"apply": {
+				"model": "minecraft:block/white_carpet"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "north",
+				"shape": "straight"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_straight",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "north",
+				"shape": "inner_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "north",
+				"shape": "inner_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "north",
+				"shape": "outer_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "north",
+				"shape": "outer_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "south",
+				"shape": "straight"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_straight",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "south",
+				"shape": "inner_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "south",
+				"shape": "inner_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "south",
+				"shape": "outer_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "south",
+				"shape": "outer_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "east",
+				"shape": "straight"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_straight"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "east",
+				"shape": "inner_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "east",
+				"shape": "inner_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "east",
+				"shape": "outer_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "east",
+				"shape": "outer_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer"
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "west",
+				"shape": "straight"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_straight",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "west",
+				"shape": "inner_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "west",
+				"shape": "inner_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_inner",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "west",
+				"shape": "outer_left"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"stair_shaped": "true",
+				"facing": "west",
+				"shape": "outer_right"
+			},
+			"apply": {
+				"model": "examplevisuals:block/white_carpet_stair_outer",
+				"y": 180
+			}
+		}
+	]
+}
