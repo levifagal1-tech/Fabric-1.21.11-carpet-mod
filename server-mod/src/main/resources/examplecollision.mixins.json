@@ -3,7 +3,8 @@
 	"package": "com.example.collision.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleServerLifecycleMixin"
+		"ExampleServerLifecycleMixin",
+		"CarpetStairShapeMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
