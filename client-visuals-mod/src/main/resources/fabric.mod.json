@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "examplevisuals",
+	"version": "${version}",
+	"name": "Example Visuals Mod",
+	"description": "Client-only loader for this project's resource pack collection. Bundles the packs from resourcepacks/ inside the jar and auto-registers each as a built-in, toggleable resource pack. Contains no gameplay logic - see server-mod for that.",
+	"authors": [
+		"Your Name"
+	],
+	"contact": {},
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"com.example.visuals.ExampleVisualsMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

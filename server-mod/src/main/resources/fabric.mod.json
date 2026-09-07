@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "examplecollision",
+	"version": "${version}",
+	"name": "Example Collision Mod",
+	"description": "Server-side gameplay/collision logic. Stays vanilla-registry-compatible (no new blocks/items) so unmodded clients can still join; pair with the client-visuals-mod resource packs for the full experience.",
+	"authors": [
+		"Your Name"
+	],
+	"contact": {},
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.example.collision.ExampleCollisionMod"
+		]
+	},
+	"mixins": [
+		"examplecollision.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
