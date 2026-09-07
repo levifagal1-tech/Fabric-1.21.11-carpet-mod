@@ -104,10 +104,21 @@ public abstract class CarpetStairShapeMixin {
 				&& state.getValue(BlockStateProperties.HALF) == Half.BOTTOM;
 	}
 
-	// Splits the carpet's footprint into 4 pixel-scale quadrants (front/back x left/right,
-	// relative to the stair's facing) and drops each one 8 pixels - still only 1 pixel thick -
-	// wherever the stair below is low there instead of full height, so the carpet's thin slice
-	// always rests directly on the stair's actual surface.
+	// Splits the carpet's footprint into 4 pixel-scale quadrants and drops each one 8 pixels -
+	// still only 1 pixel thick - wherever the stair below is low there instead of full height,
+	// so the carpet's thin slice always rests directly on the stair's actual surface.
+	//
+	// The low/tall and clockwise/counterclockwise classification below was derived by fetching
+	// vanilla's own block/stairs.json + block/inner_stairs.json + block/outer_stairs.json models
+	// and the oak_stairs.json blockstate rotation table from a public Minecraft assets mirror on
+	// GitHub, and working out the actual box coordinates for facing=east (the one variant with
+	// zero applied rotation, so it's the canonical reference) plus a couple of rotated variants
+	// to confirm the rotation math. Two things came out backwards from the first version:
+	//  - `facing` points at the TALL side, not the low/tread side (the unrotated east model's
+	//    raised box sits at x:8-16, the east half - same direction as facing).
+	//  - inner and outer don't share one left/right convention: inner_right's low corner sits
+	//    counterclockwise of facing, while outer_right's tall corner sits clockwise of facing -
+	//    they're mirror-image rules, not the same rule reused.
 	//
 	// NOTE: the "down" boxes have negative Y, i.e. they extend below this block's own bounds
 	// into the stair's block space. That's untested against real Minecraft in this environment
@@ -115,16 +126,16 @@ public abstract class CarpetStairShapeMixin {
 	// instead extend the *stair's* own collision shape upward by 1 pixel for the matching
 	// quadrants, keeping each block's shape within its own bounds.
 	private static VoxelShape examplecollision$carpetStairShape(Direction facing, StairsShape shape) {
-		Direction right = facing.getClockWise();
+		Direction clockwise = facing.getClockWise();
 		VoxelShape result = Shapes.empty();
 
 		for (int cornerX : new int[] {0, 8}) {
 			for (int cornerZ : new int[] {0, 8}) {
 				double dx = (cornerX + 4) - 8;
 				double dz = (cornerZ + 4) - 8;
-				boolean front = dx * facing.getStepX() + dz * facing.getStepZ() > 0;
-				boolean rightSide = dx * right.getStepX() + dz * right.getStepZ() > 0;
-				boolean down = examplecollision$isQuadrantDown(shape, front, rightSide);
+				boolean low = dx * facing.getStepX() + dz * facing.getStepZ() < 0;
+				boolean clockwiseSide = dx * clockwise.getStepX() + dz * clockwise.getStepZ() > 0;
+				boolean down = examplecollision$isQuadrantDown(shape, low, clockwiseSide);
 
 				double minY = down ? -8.0 : 0.0;
 				double maxY = down ? -7.0 : 1.0;
@@ -135,17 +146,13 @@ public abstract class CarpetStairShapeMixin {
 		return result;
 	}
 
-	// front/right here are relative to the stair's facing, as computed above; "left" is simply
-	// !right. Verify in-game against real inner_left/inner_right/outer_left/outer_right stairs -
-	// which physical corner "left" vs "right" refers to is the one part of this that's based on
-	// long-standing modding knowledge rather than a source check I could actually run here.
-	private static boolean examplecollision$isQuadrantDown(StairsShape shape, boolean front, boolean right) {
+	private static boolean examplecollision$isQuadrantDown(StairsShape shape, boolean low, boolean clockwiseSide) {
 		return switch (shape) {
-			case INNER_LEFT -> front && !right;
-			case INNER_RIGHT -> front && right;
-			case OUTER_LEFT -> !(!front && !right);
-			case OUTER_RIGHT -> !(!front && right);
-			default -> front;
+			case INNER_LEFT -> low && clockwiseSide;
+			case INNER_RIGHT -> low && !clockwiseSide;
+			case OUTER_LEFT -> low || clockwiseSide;
+			case OUTER_RIGHT -> low || !clockwiseSide;
+			default -> low;
 		};
 	}
 }
